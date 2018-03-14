@@ -4,6 +4,8 @@ public class MaximumSubarray53 {
     public static void main(String[] args) {
         System.out.println(new MaximumSubarray53().maxSubArray(new int[]{-2, 1}));
         System.out.println(new MaximumSubarray53().maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+        System.out.println(new MaximumSubarray53().maxSubArray2(new int[]{-2, 1}));
+        System.out.println(new MaximumSubarray53().maxSubArray2(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
     }
 
     public int maxSubArray(int[] nums) {
@@ -25,6 +27,28 @@ public class MaximumSubarray53 {
                 max = nums[i];
             } else if (nums[i] > sum[start]) {
                 start = i;
+            }
+        }
+
+        return max;
+    }
+
+    public int maxSubArray2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int sum = 0;
+        int max = 0;
+        for (int n : nums) {
+            if (sum < 0) {
+                sum = n;
+            } else {
+                sum += n;
+            }
+
+            if (sum > max) {
+                max = sum;
             }
         }
 

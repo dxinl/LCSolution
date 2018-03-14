@@ -1,3 +1,5 @@
+package easy;
+
 public class ConvertBSTToGreaterTree538 {
     /**
      * Definition for a binary tree node.

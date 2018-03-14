@@ -11,7 +11,7 @@ public class NumberComplement476 {
         while (num >= 1) {
             int i = num & 1;
             result += (i ^ 1) * count;
-            count *= 2;
+            count <<= 1;
             num >>= 1;
         }
         return result;
