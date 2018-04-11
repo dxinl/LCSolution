@@ -32,7 +32,7 @@ public class MergeIntervals56 {
     public static void main(String[] args) {
         List<Interval> intervals = new LinkedList<>();
         intervals.add(new Interval(0, 0));
-//        intervals.add(new Interval(-1, 6));
+        intervals.add(new Interval(-1, 6));
         intervals.add(new Interval(8, 10));
         intervals.add(new Interval(13, 15));
         System.out.println(new MergeIntervals56().merge(intervals));
@@ -69,6 +69,7 @@ public class MergeIntervals56 {
 
             if (c == 0 && count == 0) {
                 list.add(new Interval(i, i));
+                continue;
             }
 
             if (count == 0) {
