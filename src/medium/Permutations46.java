@@ -1,13 +1,10 @@
 package medium;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Permutations46 {
     public static void main(String[] args) {
-        System.out.println(new Permutations46().permute(new int[]{1, 2, 3}));
+        System.out.println(new Permutations46().permute2(new int[]{1, 2, 3}));
     }
 
     public List<List<Integer>> permute(int[] nums) {
@@ -47,5 +44,41 @@ public class Permutations46 {
             }
         }
         return result;
+    }
+
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> result = new LinkedList<>();
+        if (nums.length == 0) {
+            return result;
+        }
+
+        permute(nums, 0, result);
+        return result;
+    }
+
+    private void permute(int nums[], int start, List<List<Integer>> result) {
+        if (start == nums.length - 1) {
+            List<Integer> tmp = new ArrayList<>(nums.length);
+            for (int num : nums) {
+                tmp.add(num);
+            }
+            result.add(tmp);
+            return;
+        }
+
+        for (int i = start; i < nums.length; i++) {
+            swap(nums, start, i);
+            permute(nums, start + 1, result);
+            swap(nums, start, i);
+        }
+    }
+
+    private void swap(int[] nums, int a, int b) {
+        if (a == b) {
+            return;
+        }
+        int t = nums[a];
+        nums[a] = nums[b];
+        nums[b] = t;
     }
 }
